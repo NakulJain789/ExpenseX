@@ -26,7 +26,7 @@ ExpenseX is a student-focused expense management app that lets users track perso
 - ✅ Personal expense dashboard UI
 - ✅ Group creation & bill-splitting interface
 - ✅ Mock OCR receipt scan flow
-- ✅ Mock login/signup
+- ⏳ Mock login/signup
 - ⏳ Backend integration
 - ⏳ Real OCR processing via API
 - ⏳ Real-time sync across group members
@@ -56,7 +56,7 @@ ExpenseX is a student-focused expense management app that lets users track perso
 | Group Split | [add screenshot] |
 | OCR Scan | [add screenshot] |
 
-🔗 **Live Demo:** [deployed link, if any]
+🔗 **Live Demo:** https://nakuljain789.github.io/ExpenseX/
 🎥 **Video Walkthrough:** [YouTube/Drive link, if any]
 
 ---
@@ -64,13 +64,13 @@ ExpenseX is a student-focused expense management app that lets users track perso
 ## 📂 Project Structure
 
 ```
-├── public/              # Static assets
+├── public/              
 ├── src/
-│   ├── components/      # Reusable UI components
-│   ├── pages/ or app/   # Route-level pages
-│   ├── assets/          # Images, icons
-│   ├── data/            # Mock/dummy data (JSON)
-│   ├── styles/          # Global styles
+│   ├── components/      
+│   ├── pages/ or app/   
+│   ├── assets/          
+│   ├── data/           
+│   ├── styles/          
 │   └── App.jsx
 ├── package.json
 └── README.md
@@ -83,22 +83,6 @@ ExpenseX is a student-focused expense management app that lets users track perso
 ### Prerequisites
 - Node.js (v18+ recommended)
 - npm or yarn
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/[org-or-username]/ExpenseX.git
-cd ExpenseX
-
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-```
-
-The app will be available at `http://localhost:3000` (or the port shown in your terminal).
 
 ---
 
