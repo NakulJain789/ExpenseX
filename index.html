@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExpenseX — Student Expense & Bill Splitting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark">₹</div>
+    ExpenseX
+  </div>
+  <nav id="tabs">
+    <button data-page="dashboard" class="active">Dashboard</button>
+    <button data-page="scan">Scan Receipt</button>
+    <button data-page="split">Split &amp; Settle</button>
+    <button data-page="dna">Spending DNA</button>
+    <button data-page="budget">Budget Watch</button>
+    <button data-page="duplicate">Duplicate Check</button>
+  </nav>
+</div>
+<main>
+  <section class="page active" id="dashboard">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">The pipeline</div>
+        <h1>
+          One photo of a receipt.<br>
+          A fully settled group bill.
+        </h1>
+        <p class="sub" style="margin-bottom:0;">
+          ExpenseX turns a receipt photo into structured expense data,
+          splits it fairly across a group, and learns your spending habits over time —
+          no manual entry, no group-chat math.
+        </p>
+        <div class="flow">
+          <span class="step">SCAN</span>
+          <span class="arrow">→</span>
+          <span class="step">UNDERSTAND</span>
+          <span class="arrow">→</span>
+          <span class="step">SPLIT</span>
+          <span class="arrow">→</span>
+          <span class="step">LEARN</span>
+        </div>
+        <div style="margin-top:24px; display:flex; gap:12px;">
+          <button class="btn btn-primary" onclick="goTo('scan')">
+            Try the OCR pipeline →
+          </button>
+          <button class="btn btn-ghost" onclick="goTo('dna')">
+            See spending insights
+          </button>
+        </div>
+      </div>
+      <div class="receipt">
+        <h3>CAMPUS CAFE</h3>
+        <div class="muted">
+          Sector 62 · GSTIN 09XXXXXX1Z
+        </div>
+        <hr>
+        <div class="row">
+          <span>Cold Coffee</span>
+          <span>₹180</span>
+        </div>
+        <div class="row">
+          <span>Veg Sandwich</span>
+          <span>₹150</span>
+        </div>
+        <div class="row">
+          <span>Fries</span>
+          <span>₹120</span>
+        </div>
+        <div class="row">
+          <span>Brownie</span>
+          <span>₹90</span>
+        </div>
+        <hr>
+        <div class="row">
+          <span>Subtotal</span>
+          <span>₹540</span>
+        </div>
+        <div class="row">
+          <span>GST (5%)</span>
+          <span>₹27</span>
+        </div>
+        <div class="row">
+          <span>Delivery</span>
+          <span>₹30</span>
+        </div>
+        <hr>
+        <div class="row total">
+          <span>TOTAL</span>
+          <span>₹597</span>
+        </div>
+        <div class="muted" style="margin-top:8px;">
+          Parsed in 1.8s · OCR confidence 96%
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-4" style="margin-bottom:18px;">
+      <div class="card stat">
+        <span class="label">Spent this month</span>
+        <span class="value">₹3,850</span>
+        <span class="delta up">↑ 18% vs last month</span>
+      </div>
+      <div class="card stat">
+        <span class="label">Budget remaining</span>
+        <span class="value">₹1,150</span>
+        <span class="delta" style="color:var(--amber);">
+          77% of ₹5,000 used
+        </span>
+      </div>
+      <div class="card stat">
+        <span class="label">Group balance</span>
+        <span class="value" style="color:var(--mint);">+₹410</span>
+        <span class="delta down">You're owed, net</span>
+      </div>
+      <div class="card stat">
+        <span class="label">Receipts scanned</span>
+        <span class="value">27</span>
+        <span class="delta" style="color:var(--muted);">
+          2 flagged as duplicates
+        </span>
+      </div>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <h2>🧾 Intelligent OCR</h2>
+        <p class="hint" style="margin-bottom:0;">
+          Photo → enhancement → OCR → validation → structured expense.
+        </p>
+      </div>
+      <div class="card">
+        <h2>🤝 Smart Settlement</h2>
+        <p class="hint" style="margin-bottom:0;">
+          Assign items, split shared charges proportionally,
+          settle in the fewest transactions.
+        </p>
+      </div>
+      <div class="card">
+        <h2>📊 Spending Insights</h2>
+        <p class="hint" style="margin-bottom:0;">
+          Category breakdown, budget tracking and overspending alerts.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="page" id="scan">
+    <div class="eyebrow">Feature 1</div>
+    <h1>Intelligent OCR</h1>
+    <p class="sub">
+      A receipt photo becomes clean, editable expense data —
+      with a visible confidence score, not a black box.
+    </p>
+    <div class="pipeline" id="pipeline">
+      <div class="p-node">
+        <div class="p-dot">1</div>
+        <div class="p-label">Quality Check</div>
+      </div>
+      <div class="p-node">
+        <div class="p-dot">2</div>
+        <div class="p-label">Enhancement</div>
+      </div>
+      <div class="p-node">
+        <div class="p-dot">3</div>
+        <div class="p-label">OCR Extract</div>
+      </div>
+      <div class="p-node">
+        <div class="p-dot">4</div>
+        <div class="p-label">Validation</div>
+      </div>
+      <div class="p-node">
+        <div class="p-dot">5</div>
+        <div class="p-label">Structured Expense</div>
+      </div>
+    </div>
+    <div class="card dropzone">
+      <h3>Drop a receipt photo here</h3>
+      <p>
+        Frontend prototype — click below to run the pipeline on sample receipt data.
+      </p>
+      <div class="demo-btns">
+        <button class="btn btn-primary" onclick="runPipeline()">
+          📷 Scan Campus Cafe receipt
+        </button>
+        <button class="btn btn-ghost" onclick="resetPipeline()">
+          Reset
+        </button>
+      </div>
+    </div>
+    <div id="scanResult" style="display:none; margin-top:22px;">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <h2 style="margin-bottom:0;">
+            Structured expense
+          </h2>
+          <span class="badge">
+            ✓ 96% confidence
+          </span>
+        </div>
+        <p class="hint">
+          Fields are editable — confirm anything OCR got wrong.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="num">Qty</th>
+              <th class="num">Price</th>
+            </tr>
+          </thead>
+          <tbody id="itemsBody"></tbody>
+        </table>
+        <div style="margin-top:6px;">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <span>₹540.00</span>
+          </div>
+          <div class="total-row">
+            <span>GST (5%)</span>
+            <span>₹27.00</span>
+          </div>
+          <div class="total-row">
+            <span>Delivery</span>
+            <span>₹30.00</span>
+          </div>
+          <div class="total-row grand">
+            <span>Total</span>
+            <span>₹597.00</span>
+          </div>
+        </div>
+        <div class="alert alert-good">
+          <div>✅</div>
+          <div>
+            <b>Validated</b> —
+            items sum to the printed total.
+            Category: <b>Food &amp; Dining</b>.
+          </div>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="goTo('split')">
+            Split this bill →
+          </button>
+          <button class="btn btn-ghost" onclick="goTo('duplicate')">
+            Check for duplicates
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="page" id="split">
+    <div class="eyebrow">Feature 2</div>
+    <h1>Smart Settlement</h1>
+    <p class="sub">
+      Tap who shared each item — GST and delivery split proportionally,
+      and the group settles in the fewest possible transactions.
+    </p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h2>Who's in this bill</h2>
+        <p class="hint">
+          You paid ₹597 upfront at Campus Cafe.
+        </p>
+        <div class="member">
+          <div class="avatar" style="background:#4C5FD5;">YOU</div>
+          Nakul — paid the bill
+        </div>
+        <div class="member">
+          <div class="avatar" style="background:#22C99A;">PJ</div>
+          Aradhye
+        </div>
+        <div class="member">
+          <div class="avatar" style="background:#F0A93D;">RK</div>
+          Aarohi
+        </div>
+        <div class="member">
+          <div class="avatar" style="background:#FF5A5F;">AN</div>
+          Mahitha
+        </div>
+        <h2 style="margin-top:20px;">
+          Assign items
+        </h2>
+        <p class="hint">
+          Tap a name to include them in that item's split.
+        </p>
+        <div id="itemSplitList"></div>
+      </div>
+      <div class="card">
+        <h2>Settlement — minimum transactions</h2>
+        <p class="hint">
+          Debts are simplified so no one sends more transfers than necessary.
+        </p>
+        <div id="settleList"></div>
+      </div>
+    </div>
+  </section>
+  <section class="page" id="dna">
+    <div class="eyebrow">Feature 3</div>
+    <h1>Student Spending DNA</h1>
+    <p class="sub">
+      After a handful of scanned receipts,
+      PaperTrail builds a spending profile — where the money goes.
+    </p>
+    <div class="card">
+      <div class="dna">
+        <canvas id="dnaChart" width="220" height="220"></canvas>
+        <div style="flex:1; min-width:200px;">
+          <div class="legend">
+            <span class="dot" style="background:#FF5A5F;"></span>
+            Food
+            <span class="pct">42%</span>
+          </div>
+          <div class="legend">
+            <span class="dot" style="background:#4C5FD5;"></span>
+            Travel
+            <span class="pct">23%</span>
+          </div>
+          <div class="legend">
+            <span class="dot" style="background:#F0A93D;"></span>
+            Entertainment
+            <span class="pct">18%</span>
+          </div>
+          <div class="legend">
+            <span class="dot" style="background:#22C99A;"></span>
+            Education
+            <span class="pct">12%</span>
+          </div>
+          <div class="legend">
+            <span class="dot" style="background:#5C6270;"></span>
+            Other
+            <span class="pct">5%</span>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-warn">
+        <div>📈</div>
+        <div>
+          <b>You spent 18% more on food this month.</b>
+          <small>
+            Mostly late-night orders after 9 PM —
+            3 of your last 5 food expenses were delivery, not the canteen.
+          </small>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="page" id="budget">
+    <div class="eyebrow">Overspending alert</div>
+    <h1>Budget Watch</h1>
+    <p class="sub">
+      Predicts an overspend while there's still time to act,
+      instead of finding out at month-end.
+    </p>
+    <div class="card">
+      <h2>Monthly budget — Food</h2>
+      <div class="bar-outer" style="margin-top:12px;">
+        <div class="bar-inner" style="width:77%;"></div>
+      </div>
+      <div class="figures">
+        <span>Spent ₹3,850</span>
+        <span>Budget ₹5,000</span>
+        <span>Remaining ₹1,150</span>
+      </div>
+      <div class="alert alert-bad">
+        <div>🚨</div>
+        <div>
+          <b>You're approaching your food budget.</b>
+          <small>
+            At this rate you may exceed it in about 6 days.
+          </small>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="page" id="duplicate">
+    <div class="eyebrow">Trust &amp; integrity</div>
+    <h1>Duplicate Receipt Detection</h1>
+    <p class="sub">
+      Catches a receipt uploaded twice before it gets split
+      or reimbursed twice.
+    </p>
+    <div class="card dropzone">
+      <h3>Simulate an upload</h3>
+      <p>
+        Try uploading the Campus Cafe receipt again
+        to see the detector trigger.
+      </p>
+      <div class="demo-btns">
+        <button class="btn btn-primary" onclick="checkDuplicate(true)">
+          📷 Upload same receipt again
+        </button>
+        <button class="btn btn-ghost" onclick="checkDuplicate(false)">
+          📷 Upload a new receipt
+        </button>
+      </div>
+    </div>
+    <div id="dupResult" style="margin-top:20px;"></div>
+  </section>
+</main>
+<footer>
+  <span>
+    Frontend-only prototype — no backend, all data is simulated.
+  </span>
+  <span>
+    HTML · CSS · vanilla JS
+  </span>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
