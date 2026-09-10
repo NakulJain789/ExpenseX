@@ -61,23 +61,6 @@ ExpenseX is a student-focused expense management app that lets users track perso
 
 ---
 
-## 📂 Project Structure
-
-```
-├── public/              
-├── src/
-│   ├── components/      
-│   ├── pages/ or app/   
-│   ├── assets/          
-│   ├── data/           
-│   ├── styles/          
-│   └── App.jsx
-├── package.json
-└── README.md
-```
-
----
-
 ## ⚙️ Getting Started
 
 ### Prerequisites
